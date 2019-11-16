@@ -1,5 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="cab_login_main_text">40dp</dimen>
+    <dimen name="cab_login_main_text">40sp</dimen>
     <dimen name="layout_basic_margin">16dp</dimen>
 </resources>
