@@ -4,4 +4,22 @@
     <string name="input_number">Enter Number</string>
     <string name="user_login_bt">Login</string>
     <string name="user_login_heading">User Login</string>
+    <string name="MAP_API_KEY">AIzaSyDtCdKgb7Pc1IJesHhsOeFmyLBoY1SSzVY</string>
+    <string name="default_info_title">Australia</string>
+    <string name="default_info_snippet">Sydney</string>
+    <string name="user_login_resend_bt">Resend</string>
+    <string name="hint_verification_code">Enter Code</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="sign_out">Sign out</string>
+    <string name="signed_out">Log Out</string>
+    <string name="signed_in">Sign in</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="phone_title_text">Phone Number</string>
+
 </resources>

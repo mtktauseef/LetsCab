@@ -7,35 +7,114 @@
     android:layout_marginRight="@dimen/layout_basic_margin"
     android:layout_marginLeft="@dimen/layout_basic_margin">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp"
-        android:text="@string/user_login_heading"
-        android:textAlignment="center"
-        android:textSize="@dimen/cab_login_main_text" />
-
-    <EditText
-        android:id="@+id/editText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/input_number"
-        android:autofillHints="@string/input_number"
-        android:inputType="phone"
-        tools:targetApi="o" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_login"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="@string/phone_title_text"
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/ThemeOverlay.MyTextDetail"
+            android:text="@string/signed_out" />
+
+        <TextView
+            android:id="@+id/detail"
+            style="@style/ThemeOverlay.MyTextDetail"
+            tools:text="Firebase User ID: 123456789abc" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phoneAuthFields"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/user_login_bt"
-        android:layout_gravity="center_horizontal"/>
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/user_login_heading"
+            android:textAlignment="center"
+            android:textSize="@dimen/cab_login_main_text" />
+
+        <EditText
+            android:id="@+id/fieldPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="@string/input_number"
+            android:autofillHints="@string/input_number"
+            android:inputType="phone"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/fieldVerificationCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_verification_code"
+            android:inputType="number" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonStartVerification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/user_login_bt"
+            android:layout_gravity="center_horizontal"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonResend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/user_login_resend_bt" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonVerifyPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/verify_phone_auth" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signedInButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:visibility="gone"
+        android:weightSum="1.0">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signOutButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="@string/sign_out"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+    </LinearLayout>
 
 </LinearLayout>

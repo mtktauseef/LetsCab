@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "264386289653",
+    "firebase_url": "https://lets-cab-2a996.firebaseio.com",
+    "project_id": "lets-cab-2a996",
+    "storage_bucket": "lets-cab-2a996.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264386289653:android:7db8c5e1d2a7e3db1b0abc",
+        "android_client_info": {
+          "package_name": "com.ulproject.letscab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264386289653-hdbg95094v6ao341tda713r5es5nbrlr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ulproject.letscab",
+            "certificate_hash": "146872bb46809691d9979dacc9041ca7d216dca6"
+          }
+        },
+        {
+          "client_id": "264386289653-dnge0hb40maho0vtbboqrn63stab9dr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCMDEZXnCV0b891GS1nfieWilAY3-a_jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264386289653-dnge0hb40maho0vtbboqrn63stab9dr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
