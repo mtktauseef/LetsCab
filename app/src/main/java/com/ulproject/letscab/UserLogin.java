@@ -1,5 +1,6 @@
 package com.ulproject.letscab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.ulproject.letscab.view.TripMaster;
 
 import java.util.concurrent.TimeUnit;
 
@@ -92,7 +95,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 //Passsing Users Directly ot Main Activity
-                Intent intent = new Intent(UserLogin.this, MainActivity.class);
+                Intent intent = new Intent(UserLogin.this, TripMaster.class);
                 startActivity(intent);
             }
         });
@@ -322,7 +325,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                 disableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
                         mVerificationField);
                 mDetailText.setText(R.string.status_verification_succeeded);
-
+                Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                 // Set the verification text based on the credential
                 if (cred != null) {
                     if (cred.getSmsCode() != null) {
@@ -331,6 +334,9 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                         mVerificationField.setText(R.string.instant_validation);
                     }
                 }
+
+                Intent intent = new Intent(UserLogin.this, TripMaster.class);
+                startActivity(intent);
 
                 break;
             case STATE_SIGNIN_FAILED:

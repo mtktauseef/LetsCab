@@ -1,4 +1,4 @@
-package com.ulproject.letscab.activity;
+package com.ulproject.letscab.view;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,14 +24,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.ulproject.letscab.R;
 
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class TripMaster extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = TripMaster.class.getSimpleName();
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     // Keys for storing activity state.
@@ -66,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
-
+        /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .setAction("Action", null).show();
             }
         });
+         */
 
     }
 

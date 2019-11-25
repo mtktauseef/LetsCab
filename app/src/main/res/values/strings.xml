@@ -4,7 +4,7 @@
     <string name="input_number">Enter Number</string>
     <string name="user_login_bt">Login</string>
     <string name="user_login_heading">User Login</string>
-    <string name="MAP_API_KEY">AIzaSyDtCdKgb7Pc1IJesHhsOeFmyLBoY1SSzVY</string>
+    <string name="MAP_API_KEY">AIzaSyCyHpllSk_mjA3ZC8imm-3WL9TvTVI5Pe4</string>
     <string name="default_info_title">Australia</string>
     <string name="default_info_snippet">Sydney</string>
     <string name="user_login_resend_bt">Resend</string>
@@ -14,6 +14,7 @@
     <string name="signed_out">Log Out</string>
     <string name="signed_in">Sign in</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="test"> AIzaSyCyHpllSk_mjA3ZC8imm-3WL9TvTVI5Pe4  AIzaSyDtCdKgb7Pc1IJesHhsOeFmyLBoY1SSzVY</string>
 
     <string name="status_code_sent">Code Sent</string>
     <string name="status_verification_failed">Verification failed</string>
@@ -22,4 +23,15 @@
     <string name="instant_validation">(instant validation)</string>
     <string name="phone_title_text">Phone Number</string>
 
+
+    <string name="google_distance_matrix_api_key">AIzaSyCyHpllSk_mjA3ZC8imm-3WL9TvTVI5Pe4</string>
+
+    <string name="search_place">Searching…</string>
+    <string name="need_location">Enable GPS SERVICE</string>
+    <string name="location_content">This app wants to change your device settings use GPS,Wi-Fi and cell networks for
+        your location
+    </string>
+    <string name="no_car">No Car</string>
+
+    <string name="frisbee_needs_your_location_in_order_to_find_your_captain_according_to_current_location">Frisbee needs your location in order to find nearby drivers and your current location .</string>
 </resources>
