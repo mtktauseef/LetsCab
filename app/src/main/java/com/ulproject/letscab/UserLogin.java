@@ -334,7 +334,6 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                         mVerificationField.setText(R.string.instant_validation);
                     }
                 }
-
                 Intent intent = new Intent(UserLogin.this, MainActivity.class);
                 startActivity(intent);
 
