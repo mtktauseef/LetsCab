@@ -91,6 +91,7 @@ public class DriverCollection {
         );
     }
 
+
     public Driver getNearestDriver(double lat, double lng) {
         List<Driver> filteredDriverList = sortDriversByDistance(lat, lng);
         if (filteredDriverList.size() == 0)

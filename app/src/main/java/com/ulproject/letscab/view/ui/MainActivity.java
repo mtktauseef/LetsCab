@@ -1,4 +1,4 @@
-package com.ulproject.letscab.view;
+package com.ulproject.letscab.view.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -71,6 +71,7 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contenemain_new);
         activityComponent.inject(this);
+
         MainActivityViewModelFactory factory = new MainActivityViewModelFactory(uiHelper,
                 LocationServices.getFusedLocationProviderClient(this),
                 appRxSchedulers,
@@ -78,13 +79,16 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
                 markerRepo,
                 googleMapHelper
         );
+
         viewModel = ViewModelProviders.of(this, factory).get(MainActivityViewModel.class);
         geocoder = new Geocoder(this);
         initViews();
+
         if (!uiHelper.isPlayServicesAvailable()) {
             uiHelper.toast("Play services is not installed!");
             finish();
         } else requestLocationUpdates();
+
         SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         assert supportMapFragment != null;
         supportMapFragment.getMapAsync(googleMap -> {
@@ -92,8 +96,11 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
             setGoogleMapSettings();
         });
 
+        // Getting Place Name of current location from Main Activity View Model
         viewModel.reverseGeocodeResult
                 .observe(this, placeName -> currentPlaceTextView.setText(placeName));
+
+        // observe the user’s current location from MainActivityViewModel.
         viewModel.currentLocation
                 .observe(this, location -> {
                     if (firstTimeFlag) {
@@ -160,6 +167,8 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
         googleMap.setOnCameraMoveStartedListener(this);
     }
 
+    // OnCameraIdleListener on MainActivity. The OnCameraIdleListener has its callback function which defines what actions needs to done when the camera stopped its movement.
+    // In this callback, we need to get the coordinates from PinView and execute our Reverse Geocode request.
     @Override
     public void onCameraIdle() {
         if (googleMap == null) return;
@@ -180,7 +189,7 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
         if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
             if (grantResults[0] == PERMISSION_DENIED) {
                 RelativeLayout mainActivityRootView = findViewById(R.id.mainActivityRootView);
-                uiHelper.showSnackBar(mainActivityRootView, getResources().getString(R.string.frisbee_needs_your_location_in_order_to_find_your_captain_according_to_current_location));
+                uiHelper.showSnackBar(mainActivityRootView, getResources().getString(R.string.permission_needed));
             }
             if (grantResults[0] == PERMISSION_GRANTED)
                 requestLocationUpdates();

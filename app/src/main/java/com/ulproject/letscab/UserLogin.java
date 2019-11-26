@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.ulproject.letscab.view.TripMaster;
+import com.ulproject.letscab.view.ui.TripMaster;
 
 import java.util.concurrent.TimeUnit;
 

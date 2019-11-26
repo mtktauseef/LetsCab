@@ -13,7 +13,15 @@ public class FirebaseValueEventListenerHelper implements ChildEventListener {
 
     private final FirebaseObjectValueListener firebaseObjectValueListener;
 
+    /**
+     * These will be triggered whenever there’s a new Driver added inside the online_drivers node.
+     * Notice how we parse the Driver model, by calling the getValue method, the snapshot is parsed to whatever data model you want.
+     * After parsing the data we simply call the onDriverOnline method, which implemented inside the MainActivityViewModel class.
+     * This method will be triggered whenever the Driver node update in the online_drivers node.
+     * The onChildRemoved method will be called when there’s a Driver goes offline inside the online_drivers node.
+     */
 
+    //  abstract methods
     public FirebaseValueEventListenerHelper(FirebaseObjectValueListener firebaseObjectValueListener) {
         this.firebaseObjectValueListener = firebaseObjectValueListener;
     }

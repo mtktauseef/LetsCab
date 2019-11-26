@@ -1,4 +1,4 @@
-package com.ulproject.letscab.view;
+package com.ulproject.letscab.view.ui;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

@@ -42,9 +42,12 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 
+// All of our network calls and logical implementation will be handled inside
+
 public class MainActivityViewModel extends ViewModel implements FirebaseObjectValueListener {
 
     private static final String ONLINE_DRIVERS = "online_drivers";
+
     private static final String TAG = MainActivityViewModel.class.getSimpleName();
     private final UiHelper uiHelper;
     private final FusedLocationProviderClient locationProviderClient;
@@ -52,8 +55,14 @@ public class MainActivityViewModel extends ViewModel implements FirebaseObjectVa
     private final GoogleMapHelper googleMapHelper;
     private final MarkerRepo markerRepo;
     private final AppRxSchedulers appRxSchedulers;
+
+    // Getting online drivers from FireBase from root node to the reference to online_drivers.
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(ONLINE_DRIVERS);
+
+    // You see we’re not exposing our MediatorLiveData instance publically instead we simply given a LiveData just to observe the location.
+    // By doing this we’re keeping our immutability principle safe.
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    // Reverse Geo Code for Main Activity
     private MediatorLiveData<String> _reverseGeocodeResult = new MediatorLiveData<>();
     public LiveData<String> reverseGeocodeResult = _reverseGeocodeResult;
     private MediatorLiveData<Location> _currentLocation = new MediatorLiveData<>();
@@ -62,6 +71,9 @@ public class MainActivityViewModel extends ViewModel implements FirebaseObjectVa
     public LiveData<String> calculateDistance = _calculateDistance;
     private MediatorLiveData<Pair<String, MarkerOptions>> _addNewMarker = new MediatorLiveData<>();
     public LiveData<Pair<String, MarkerOptions>> addNewMarker = _addNewMarker;
+
+    // Creating Location call back and passing it to Uihelper Class
+    // We are sending the location back to our MainActivity via LiveData.
     private LocationCallback locationCallback = new LocationCallback() {
 
         @Override
@@ -80,10 +92,15 @@ public class MainActivityViewModel extends ViewModel implements FirebaseObjectVa
         this.markerRepo = markerRepo;
         this.appRxSchedulers = appRxSchedulers;
         this.googleMapHelper = googleMapHelper;
+
+        // The addChildEventListenermethod is best suitable for our use case, it will download all online Drivers from the database at application start
+        // Will notify us whenever there’s a slight change in the online driver’s node.
+
         valueEventListener = new FirebaseValueEventListenerHelper(this);
         databaseReference.addChildEventListener(valueEventListener);
     }
 
+    // Requesting Location Update
     @SuppressLint("MissingPermission")
     public void requestLocationUpdates() {
         locationProviderClient.requestLocationUpdates(uiHelper.getLocationRequest(), locationCallback, Looper.myLooper());
@@ -125,6 +142,7 @@ public class MainActivityViewModel extends ViewModel implements FirebaseObjectVa
                 }, Throwable::printStackTrace));
     }
 
+    // Overriding all abstract methods and getting back the driver state
     @Override
     public void onDriverOnline(Driver driver) {
         if (driverRepo.insert(driver)) {
@@ -158,6 +176,13 @@ public class MainActivityViewModel extends ViewModel implements FirebaseObjectVa
                         markerRepo.remove(driver.getId());
                 }, Throwable::printStackTrace));
     }
+    //Reversing Geocode for the PinView coordinates
+
+    /**
+     * launch a co-routine builder so that our called thread will not be blocked. Google recommend us to Reverse Geocode in a separate thread instead of UI thread.
+     * The getFromLocation() method returns an array of Addresses that are known to describe the area.
+     * If the GeoCoder results are not null then we pass the result to MainActivity via LiveData to show the result in the TextView
+     */
 
     public void makeReverseGeocodeRequest(LatLng latLng, Geocoder geocoder) {
         compositeDisposable.add(Observable.<String>create(emitter -> {

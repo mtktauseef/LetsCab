@@ -79,6 +79,9 @@ public class UiHelper {
         return ContextCompat.getColor(context, resource);
     }
 
+    //  we’re setting high accuracy and location time interval to 3 seconds.
+    //  After every 3 seconds our application will receive a Location update via LocationCallback
+    //  which we’ve passed previously when requesting location updates.
     public LocationRequest getLocationRequest() {
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
