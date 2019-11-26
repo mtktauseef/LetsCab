@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.ulproject.letscab.view.ui.TripMaster;
+import com.ulproject.letscab.view.ui.MainActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -335,7 +335,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                     }
                 }
 
-                Intent intent = new Intent(UserLogin.this, TripMaster.class);
+                Intent intent = new Intent(UserLogin.this, MainActivity.class);
                 startActivity(intent);
 
                 break;

@@ -72,6 +72,8 @@ public class MainActivity extends BaseActivity implements GoogleMap.OnCameraIdle
         setContentView(R.layout.contenemain_new);
         activityComponent.inject(this);
 
+        Intent intent = getIntent();
+
         MainActivityViewModelFactory factory = new MainActivityViewModelFactory(uiHelper,
                 LocationServices.getFusedLocationProviderClient(this),
                 appRxSchedulers,

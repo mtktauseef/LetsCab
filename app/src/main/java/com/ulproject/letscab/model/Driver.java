@@ -16,6 +16,10 @@ public class Driver {
         this.angle = angle;
     }
 
+    public Driver() {
+
+    }
+
     public String getId() {
         return id;
     }
